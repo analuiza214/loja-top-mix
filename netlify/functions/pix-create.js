@@ -73,7 +73,7 @@ exports.handler = async (event) => {
   const payload = {
     amount: Number(amount),
     payerName: name,
-    payerDocument: document ? String(document).replace(/\D/g, "") : "00000000000",
+    ...(document ? { payerDocument: String(document).replace(/\D/g, "") } : {}),
     transactionId,
     description:
       productName ||
